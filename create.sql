@@ -1,24 +1,24 @@
-create table publisher (
-  id integer primary key,
-  name text,
-  country text
-  );
-create table books (
-  id integer primary key,
-  title text,
-  publisher serial references publisher(id)
-  );
-create table subjects (
-  id integer primary key,
-  name text
-  );
-create table books_subjects (
-  book integer references books(id),
-  subject integer references subjects(id)
-  );
- 
- 
- 
- 
- 
-pragma foreign_keys = on;
+CREATE TABLE publisher(
+	id INTEGER PRIMARY KEY,
+	name TEXT,
+	country TEXT
+	);
+
+CREATE TABLE books(
+	id INTEGER PRIMARY KEY,
+	title text,
+	publisher INTEGER,
+	FOREIGN KEY(publisher) REFERENCES publisher(id)
+	);
+	
+CREATE TABLE subjects(
+	id INTEGER PRIMARY KEY,
+	name TEXT
+	);
+	
+CREATE TABLE books_subjects(
+	book INTEGER,
+	subject INTEGER,
+	FOREIGN KEY(book) REFERENCES books(id),
+	FOREIGN KEY(subject) REFERENCES subjects(id)
+	);
